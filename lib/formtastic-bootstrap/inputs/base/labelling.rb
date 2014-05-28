@@ -11,12 +11,17 @@ module FormtasticBootstrap
             # one that gets created by Formtastic.
             options[:class] = options[:class].reject { |c| c == 'label' }
             options[:class] << " control-label"
+            options[:class] << " #{label_class}" if label_class
           end
         end
 
         # def control_label_html
         def label_html
           render_label? ? builder.label(input_name, label_text, label_html_options) : "".html_safe
+        end
+
+        def label_class
+          options[:label_class]
         end
 
       end

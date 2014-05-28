@@ -25,15 +25,16 @@ module FormtasticBootstrap
       end
 
       def checkbox_wrapping(&block)
-        template.content_tag(:div,
+        template.content_tag(:span, 
           template.capture(&block).html_safe,
-          wrapper_html_options
+          wrapper_html_options,
+          :class => "form-wrapper #{wrapper_class}"
         )
       end
 
       def wrapper_html_options
         super.tap do |options|
-          options[:class] = (options[:class].split - ["form-group"] + ["checkbox"]).join(" ")
+          options[:class] = (options[:class].split + ["checkbox"]).join(" ")
         end
       end
 

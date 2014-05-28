@@ -8,7 +8,7 @@ module FormtasticBootstrap
         def bootstrap_wrapping(&block)
           form_group_wrapping do
             label_html <<
-            template.content_tag(:span, :class => 'form-wrapper') do
+            template.content_tag(:span, :class => "form-wrapper #{wrapper_class}") do
               input_content(&block) <<
               hint_html <<
               error_html(:block)
@@ -59,6 +59,10 @@ module FormtasticBootstrap
           [:prepend, :append, :prepend_content, :append_content].find do |key|
             options.has_key?(key)
           end ? ['input-group'] : []
+        end
+
+        def wrapper_class
+          options[:wrapper_class]
         end
 
       end
